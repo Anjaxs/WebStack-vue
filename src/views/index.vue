@@ -9,7 +9,11 @@
               <img src="../assets/images/logo@2x.png" width="100%" alt="" />
             </a>
             <a href="#" class="logo-collapsed">
-              <img src="../assets/images/logo-collapsed@2x.png" width="40" alt="" />
+              <img
+                src="../assets/images/logo-collapsed@2x.png"
+                width="40"
+                alt=""
+              />
             </a>
           </div>
           <div class="mobile-menu-toggle visible-xs">
@@ -24,15 +28,19 @@
         <!-- 侧边栏 -->
         <ul id="main-menu" class="main-menu">
           <li v-for="(menu, idx) in items" :key="idx">
-            <a :href="'#'+transName(menu)" class="smooth" @click="moveSlow">
+            <a :href="'#' + transName(menu)" class="smooth">
               <i :class="menu.icon"></i>
-              <span class="title">{{transName(menu)}}</span>
+              <span class="title">{{ transName(menu) }}</span>
             </a>
             <ul v-if="menu.children">
               <li v-for="(submenu, idx) in menu.children" :key="idx">
-                <a :href="'#'+transName(submenu)" class="smooth" @click="moveSlow">
-                  <span class="title">{{transName(submenu)}}</span>
-                  <span v-show="submenu.is_hot" class="label label-pink pull-right hidden-collapsed">Hot</span>
+                <a :href="'#' + transName(submenu)" class="smooth">
+                  <span class="title">{{ transName(submenu) }}</span>
+                  <span
+                    v-show="submenu.is_hot"
+                    class="label label-pink pull-right hidden-collapsed"
+                    >Hot</span
+                  >
                 </a>
               </li>
             </ul>
@@ -42,7 +50,9 @@
             <router-link to="/about">
               <i class="linecons-heart"></i>
               <span class="tooltip-blue">关于本站</span>
-              <span class="label label-Primary pull-right hidden-collapsed">♥︎</span>
+              <span class="label label-Primary pull-right hidden-collapsed"
+                >♥︎</span
+              >
             </router-link>
           </li>
         </ul>
@@ -60,7 +70,11 @@
               <img :src="lang.flag" /> {{ lang.name }}
             </a>
             <ul class="dropdown-menu languages">
-              <li :class="{active: langItem.key === lang.key}" v-for="langItem in langList" :key="langItem.key">
+              <li
+                :class="{ active: langItem.key === lang.key }"
+                v-for="langItem in langList"
+                :key="langItem.key"
+              >
                 <a href="#" @click="lang = langItem">
                   <img :src="langItem.flag" /> {{ langItem.name }}
                 </a>
@@ -92,38 +106,45 @@
 </template>
 
 <script>
-import WebItem from '../components/WebItem.vue'
-import Footer from '../components/Footer.vue'
-import itemsData from '../assets/data.json'
+import WebItem from "../components/WebItem.vue";
+import Footer from "../components/Footer.vue";
+import itemsData from "../assets/data.json";
+// import { loadJs } from '../assets/js/app.js'
 
 export default {
-  name: 'Index',
+  name: "Index",
   components: {
     WebItem,
-    Footer
+    Footer,
   },
   data() {
     return {
       items: itemsData,
       lang: {},
       langList: [
-        {key: 'zh', name: '简体中文', flag: './assets/images/flags/flag-cn.png'},
-        {key: 'en', name: 'English', flag: './assets/images/flags/flag-us.png'}
-      ]
-    }
+        {
+          key: "zh",
+          name: "简体中文",
+          flag: "./assets/images/flags/flag-cn.png",
+        },
+        {
+          key: "en",
+          name: "English",
+          flag: "./assets/images/flags/flag-us.png",
+        },
+      ],
+    };
   },
   created() {
-    this.lang = this.langList[0]
+    this.lang = this.langList[0];
+    // loadJs();
   },
   methods: {
     transName(webItem) {
-      return this.lang.key === 'en' ? webItem.en_name : webItem.name;
+      return this.lang.key === "en" ? webItem.en_name : webItem.name;
     },
-    moveSlow() {
-
-    }
-  }
-}
+  },
+};
 </script>
 
 <style>

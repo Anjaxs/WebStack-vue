@@ -11,6 +11,7 @@ import './assets/css/xenon-core.css'
 import './assets/css/xenon-components.css'
 import './assets/css/xenon-skins.css'
 import './assets/css/nav.css'
+import { loadJs } from './assets/js/app.js' 
 
 Vue.config.productionTip = false
 Vue.use(VueRouter)
@@ -23,6 +24,13 @@ const routes = [
 const router = new VueRouter({
   routes,
   mode: 'history'
+})
+
+router.afterEach((to, from, next) => {
+  console.log("to => ", to, "from => ", from, "next => ",  next);
+  if (to.path == '/' && to.hash == '') {
+    loadJs();
+  }
 })
 
 new Vue({
