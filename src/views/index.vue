@@ -5,10 +5,10 @@
         <header class="logo-env">
           <!-- logo -->
           <div class="logo">
-            <a href="#" class="logo-expanded">
+            <a href="javascript:void(0)" class="logo-expanded">
               <img src="../assets/images/logo@2x.png" width="100%" alt="" />
             </a>
-            <a href="#" class="logo-collapsed">
+            <a href="javascript:void(0)" class="logo-collapsed">
               <img
                 src="../assets/images/logo-collapsed@2x.png"
                 width="40"
@@ -17,10 +17,10 @@
             </a>
           </div>
           <div class="mobile-menu-toggle visible-xs">
-            <a href="#" data-toggle="user-info-menu">
+            <a href="javascript:void(0)" data-toggle="user-info-menu">
               <i class="linecons-cog"></i>
             </a>
-            <a href="#" data-toggle="mobile-menu">
+            <a href="javascript:void(0)" data-toggle="mobile-menu">
               <i class="fa-bars"></i>
             </a>
           </div>
@@ -63,10 +63,10 @@
       <nav class="navbar user-info-navbar" role="navigation">
         <ul class="user-info-menu left-links list-inline list-unstyled">
           <li class="hidden-sm hidden-xs">
-            <a href="#" data-toggle="sidebar"><i class="fa-bars"></i></a>
+            <a href="javascript:void(0)" data-toggle="sidebar"><i class="fa-bars"></i></a>
           </li>
           <li class="dropdown hover-line language-switcher">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
               <img :src="lang.flag" /> {{ lang.name }}
             </a>
             <ul class="dropdown-menu languages">
@@ -75,7 +75,7 @@
                 v-for="langItem in langList"
                 :key="langItem.key"
               >
-                <a href="#" @click="lang = langItem">
+                <a href="javascript:void(0)" @click="lang = langItem">
                   <img :src="langItem.flag" /> {{ langItem.name }}
                 </a>
               </li>
@@ -109,7 +109,7 @@
 import WebItem from "../components/WebItem.vue";
 import Footer from "../components/Footer.vue";
 import itemsData from "../assets/data.json";
-// import { loadJs } from '../assets/js/app.js'
+import { loadJs } from '../assets/js/app.js'
 
 export default {
   name: "Index",
@@ -137,7 +137,7 @@ export default {
   },
   created() {
     this.lang = this.langList[0];
-    // loadJs();
+    loadJs();
   },
   methods: {
     transName(webItem) {
